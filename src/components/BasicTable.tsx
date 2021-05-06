@@ -1,3 +1,4 @@
+import './table.css';
 import React, { useMemo } from 'react';
 import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns';
@@ -17,6 +18,7 @@ export default function BasicTable() {
     getTableProps,
     getTableBodyProps,
     headerGroups,
+    footerGroups,
     rows,
     prepareRow,
   } = tableInstance;
@@ -50,6 +52,18 @@ export default function BasicTable() {
             );
           })}
         </tbody>
+
+        <tfoot>
+          {footerGroups.map((footerGroup) => (
+            <tr {...footerGroup.getFooterGroupProps}>
+              {footerGroup.headers.map((column) => (
+                <td {...column.getFooterGroupProps}>
+                  {column.render('Footer')}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tfoot>
       </table>
     </div>
   );
