@@ -2,7 +2,7 @@ import './table.css';
 import React, { useMemo } from 'react';
 import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns';
-import { CellProps, useRowSelect, useTable } from 'react-table';
+import { CellProps, usePagination, useRowSelect, useTable } from 'react-table';
 import { Checkbox } from './Checkbox';
 
 export default function RowSelection() {
@@ -23,14 +23,15 @@ export default function RowSelection() {
       columns,
       data,
     },
+    usePagination,
     useRowSelect,
     (hooks) => {
       hooks.visibleColumns.push((columns) => {
         return [
           {
             id: 'selection',
-            Header: ({ getToggleAllRowsSelectedProps }) => (
-              <Checkbox {...getToggleAllRowsSelectedProps()} />
+            Header: ({ getToggleAllPageRowsSelectedProps }) => (
+              <Checkbox {...getToggleAllPageRowsSelectedProps()} />
             ),
             Cell: ({ row }: CellProps<any>) => (
               <Checkbox {...row.getToggleRowSelectedProps()} />
