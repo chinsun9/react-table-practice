@@ -6,21 +6,19 @@ export const COLUMNS = [
     Footer: 'ID',
     accessor: 'id',
     disableFilters: true,
+    sticky: 'left',
   },
   {
     Header: 'First Name',
     Footer: 'First Name',
     accessor: 'first_name',
+    sticky: 'left',
   },
   {
     Header: 'Last Name',
     Footer: 'Last Name',
     accessor: 'last_name',
-  },
-  {
-    Header: 'E-mail',
-    Footer: 'E-mail',
-    accessor: 'email',
+    sticky: 'left',
   },
   {
     Header: 'Date of Birth',
@@ -31,11 +29,6 @@ export const COLUMNS = [
     },
   },
   {
-    Header: 'Age',
-    Footer: 'Age',
-    accessor: 'age',
-  },
-  {
     Header: 'Country',
     Footer: 'Country',
     accessor: 'country',
@@ -44,6 +37,16 @@ export const COLUMNS = [
     Header: 'Phone',
     Footer: 'Phone',
     accessor: 'phone',
+  },
+  {
+    Header: 'E-mail',
+    Footer: 'E-mail',
+    accessor: 'email',
+  },
+  {
+    Header: 'Age',
+    Footer: 'Age',
+    accessor: 'age',
   },
 ];
 

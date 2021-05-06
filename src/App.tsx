@@ -1,5 +1,6 @@
 import React from 'react';
-import ColumnHiding from './components/ColumnHiding';
+// import ColumnHiding from './components/ColumnHiding';
+import StickyTable from './components/StickyTable';
 // import ColumnOrder from './components/ColumnOrder';
 // import FilteringTable from './components/FilteringTable';
 // import PaginationTable from './components/PaginationTable';
@@ -8,7 +9,7 @@ import ColumnHiding from './components/ColumnHiding';
 // import SortingTable from './components/SortingTable';
 
 function App() {
-  return <ColumnHiding />;
+  return <StickyTable />;
 }
 
 export default App;
