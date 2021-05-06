@@ -5,19 +5,15 @@ type PropsType = {
 };
 
 export const Checkbox = forwardRef<HTMLInputElement, PropsType>(
-  ({ indeterminate, ...rest }, ref) => {
+  ({ indeterminate = false, ...rest }, ref) => {
     const defaultRef = useRef<HTMLInputElement>();
     const resolveRef = (ref || defaultRef) as any;
 
     useEffect(() => {
       if (!resolveRef.current) return;
-      resolveRef.current.indeterminate = indeterminate || false;
+      resolveRef.current.indeterminate = indeterminate;
     }, [indeterminate, resolveRef]);
 
-    return (
-      <>
-        <input type="checkbox" ref={resolveRef} {...rest} />
-      </>
-    );
+    return <input type="checkbox" ref={resolveRef} {...rest} />;
   },
 );
