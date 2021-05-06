@@ -1,7 +1,7 @@
 import './table.css';
 import React, { useMemo } from 'react';
 import MOCK_DATA from './MOCK_DATA.json';
-import { COLUMNS, GROUPED_COLUMNS } from './columns';
+import { GROUPED_COLUMNS } from './columns';
 import { useTable } from 'react-table';
 
 export default function BasicTable() {
