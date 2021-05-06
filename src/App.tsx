@@ -6,7 +6,7 @@ import SortingTable from './components/SortingTable';
 function App() {
   return (
     <div className="App">
-      <SortingTable></SortingTable>
+      <SortingTable />
     </div>
   );
 }
