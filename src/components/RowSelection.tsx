@@ -46,7 +46,7 @@ export default function RowSelection() {
   const firstPageRows = rows.slice(0, 10);
 
   return (
-    <>
+    <div>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -76,12 +76,10 @@ export default function RowSelection() {
         </tbody>
 
         <tfoot>
-          {footerGroups.map((footerGroup, idx) => (
-            <tr {...footerGroup.getFooterGroupProps} key={idx}>
+          {footerGroups.map((footerGroup) => (
+            <tr {...footerGroup.getFooterGroupProps()}>
               {footerGroup.headers.map((column) => (
-                <td {...column.getFooterGroupProps} key={column.id}>
-                  {column.render('Footer')}
-                </td>
+                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
               ))}
             </tr>
           ))}
@@ -99,6 +97,6 @@ export default function RowSelection() {
           )}
         </code>
       </pre>
-    </>
+    </div>
   );
 }

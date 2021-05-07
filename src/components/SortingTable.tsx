@@ -26,6 +26,7 @@ export default function SortingTable() {
 
   return (
     <div>
+      <p style={{ margin: '5px' }}> 📝 click column</p>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -63,11 +64,9 @@ export default function SortingTable() {
 
         <tfoot>
           {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps}>
+            <tr {...footerGroup.getFooterGroupProps()}>
               {footerGroup.headers.map((column) => (
-                <td {...column.getFooterGroupProps}>
-                  {column.render('Footer')}
-                </td>
+                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
               ))}
             </tr>
           ))}

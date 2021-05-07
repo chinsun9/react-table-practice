@@ -3,6 +3,16 @@ import React, { useMemo } from 'react';
 import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns';
 import { usePagination, useTable } from 'react-table';
+import styled from 'styled-components';
+
+const PaginationOptions = styled.div`
+  margin: 5px;
+
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function PaginationTable() {
   const columns = useMemo(() => COLUMNS, []);
@@ -39,7 +49,7 @@ export default function PaginationTable() {
   const { pageIndex, pageSize } = state;
 
   return (
-    <>
+    <div>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -70,17 +80,15 @@ export default function PaginationTable() {
 
         <tfoot>
           {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps}>
+            <tr {...footerGroup.getFooterGroupProps()}>
               {footerGroup.headers.map((column) => (
-                <td {...column.getFooterGroupProps}>
-                  {column.render('Footer')}
-                </td>
+                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
               ))}
             </tr>
           ))}
         </tfoot>
       </table>
-      <div>
+      <PaginationOptions>
         <span>
           Page{' '}
           <strong>
@@ -101,16 +109,20 @@ export default function PaginationTable() {
             style={{ width: '50px' }}
           />
         </span>
-        <select
-          value={pageSize}
-          onChange={(e) => setPageSize(Number(e.target.value))}
-        >
-          {[10, 25, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              {pageSize}
-            </option>
-          ))}
-        </select>
+        <span>
+          Page Size:{' '}
+          <select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            {[10, 25, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                {pageSize}
+              </option>
+            ))}
+          </select>
+        </span>
+
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           {'<<'}
         </button>
@@ -123,7 +135,7 @@ export default function PaginationTable() {
         <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
           {'>>'}
         </button>
-      </div>
-    </>
+      </PaginationOptions>
+    </div>
   );
 }

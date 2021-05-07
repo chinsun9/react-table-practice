@@ -55,11 +55,9 @@ export default function BasicTable() {
 
         <tfoot>
           {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps}>
+            <tr {...footerGroup.getFooterGroupProps()}>
               {footerGroup.headers.map((column) => (
-                <td {...column.getFooterGroupProps}>
-                  {column.render('Footer')}
-                </td>
+                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
               ))}
             </tr>
           ))}

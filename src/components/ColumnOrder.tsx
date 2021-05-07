@@ -36,7 +36,7 @@ export default function ColumnOrder() {
     ]);
   };
   return (
-    <>
+    <div>
       <button onClick={changeOrder}>Change column order</button>
       <table {...getTableProps()}>
         <thead>
@@ -67,17 +67,15 @@ export default function ColumnOrder() {
         </tbody>
 
         <tfoot>
-          {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps}>
+          {footerGroups.map((footerGroup, idx) => (
+            <tr {...footerGroup.getFooterGroupProps()}>
               {footerGroup.headers.map((column) => (
-                <td {...column.getFooterGroupProps}>
-                  {column.render('Footer')}
-                </td>
+                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
               ))}
             </tr>
           ))}
         </tfoot>
       </table>
-    </>
+    </div>
   );
 }

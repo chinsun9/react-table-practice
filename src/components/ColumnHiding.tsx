@@ -4,6 +4,13 @@ import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns';
 import { useTable } from 'react-table';
 import { Checkbox } from './Checkbox';
+import styled from 'styled-components';
+
+const HidingOption = styled.div`
+  display: flex;
+  gap: 20px;
+  margin: 5px;
+`;
 
 export default function ColumnHiding() {
   const columns = useMemo(() => COLUMNS, []);
@@ -25,20 +32,20 @@ export default function ColumnHiding() {
   });
 
   return (
-    <>
-      <div>
+    <div>
+      <HidingOption>
         <div>
           <Checkbox {...getToggleHideAllColumnsProps()} /> Toggle All
         </div>
         {allColumns.map((column) => (
-          <div>
+          <div key={column.id}>
             <label>
               <input type="checkbox" {...column.getToggleHiddenProps()} />
-              {column.Header}
+              {' ' + column.Header}
             </label>
           </div>
         ))}
-      </div>
+      </HidingOption>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -69,16 +76,14 @@ export default function ColumnHiding() {
 
         <tfoot>
           {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps}>
+            <tr {...footerGroup.getFooterGroupProps()}>
               {footerGroup.headers.map((column) => (
-                <td {...column.getFooterGroupProps}>
-                  {column.render('Footer')}
-                </td>
+                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
               ))}
             </tr>
           ))}
         </tfoot>
       </table>
-    </>
+    </div>
   );
 }

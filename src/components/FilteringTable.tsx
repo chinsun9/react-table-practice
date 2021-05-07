@@ -39,7 +39,7 @@ export default function FilteringTable() {
   const { globalFilter } = state;
 
   return (
-    <>
+    <div>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div>
         <table {...getTableProps()}>
@@ -75,9 +75,9 @@ export default function FilteringTable() {
 
           <tfoot>
             {footerGroups.map((footerGroup) => (
-              <tr {...footerGroup.getFooterGroupProps}>
+              <tr {...footerGroup.getFooterGroupProps()}>
                 {footerGroup.headers.map((column) => (
-                  <td {...column.getFooterGroupProps}>
+                  <td {...column.getFooterProps()}>
                     {column.render('Footer')}
                   </td>
                 ))}
@@ -86,6 +86,6 @@ export default function FilteringTable() {
           </tfoot>
         </table>
       </div>
-    </>
+    </div>
   );
 }

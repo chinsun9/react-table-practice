@@ -10,12 +10,11 @@ export default function GlobalFilter({ filter, setFilter }: Props) {
   const [value, setValue] = useState(filter);
 
   const onChange = useAsyncDebounce((value) => {
-    console.log(`onChange`);
     setFilter(value || undefined);
   }, 1000);
 
   return (
-    <div>
+    <div style={{ margin: '5px' }}>
       <span>
         Search:{' '}
         <input
@@ -25,6 +24,7 @@ export default function GlobalFilter({ filter, setFilter }: Props) {
             setValue(e.target.value);
             onChange(e.target.value);
           }}
+          placeholder="global search"
         />
       </span>
     </div>
