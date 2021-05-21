@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import StickyTable from './components/StickyTable';
 import ColumnHiding from './components/ColumnHiding';
 import ColumnOrder from './components/ColumnOrder';
@@ -7,9 +8,9 @@ import PaginationTable from './components/PaginationTable';
 import RowSelection from './components/RowSelection';
 import BasicTable from './components/BasicTable';
 import SortingTable from './components/SortingTable';
-import { Redirect, Route, Switch } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import styled from 'styled-components';
+import EditableTable from './components/EditableTable';
 
 const LayoutRoot = styled.div`
   display: grid;
@@ -34,6 +35,7 @@ function App() {
         <Route path="/RowSelection" component={RowSelection} />
         <Route path="/BasicTable" component={BasicTable} />
         <Route path="/SortingTable" component={SortingTable} />
+        <Route path="/EditableTable" component={EditableTable} />
         <Redirect path="*" to="/StickyTable" />
       </Switch>
     </LayoutRoot>

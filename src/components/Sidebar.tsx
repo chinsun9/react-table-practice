@@ -36,6 +36,10 @@ const items = [
     href: '/StickyTable',
     title: '/StickyTable',
   },
+  {
+    href: '/EditableTable',
+    title: '/EditableTable',
+  },
 ];
 
 const Sidebar = styled.div`
