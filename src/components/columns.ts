@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { Row } from 'react-table';
 
 export const COLUMNS = [
   {
@@ -47,6 +48,32 @@ export const COLUMNS = [
     Header: 'Age',
     Footer: 'Age',
     accessor: 'age',
+    filter: (
+      rows: Array<Row>,
+      columnIds: Array<number>,
+      filterValue: string,
+    ) => {
+      const id = columnIds[0];
+
+      if (!filterValue) {
+        return rows;
+      }
+
+      if (filterValue === 'over 50') {
+        return rows.filter((row) => {
+          const rowValue = row.values[id];
+          return rowValue > 50;
+        });
+      }
+
+      return rows.filter((row) => {
+        const rowValue = row.values[id];
+        return (
+          rowValue <= filterValue &&
+          (+filterValue === 10 ? true : rowValue > +filterValue - 10)
+        );
+      });
+    },
   },
 ];
 

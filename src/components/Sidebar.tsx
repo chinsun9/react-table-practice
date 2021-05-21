@@ -40,6 +40,10 @@ const items = [
     href: '/EditableTable',
     title: '/EditableTable',
   },
+  {
+    href: '/All',
+    title: '/All',
+  },
 ];
 
 const Sidebar = styled.div`

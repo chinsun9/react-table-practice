@@ -16,7 +16,7 @@ export default function GlobalFilter({ filter, setFilter }: Props) {
   return (
     <div style={{ margin: '5px' }}>
       <span>
-        Search:{' '}
+        Search
         <input
           type="text"
           value={value || ''}

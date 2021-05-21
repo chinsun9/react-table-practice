@@ -11,6 +11,7 @@ import SortingTable from './components/SortingTable';
 import Sidebar from './components/Sidebar';
 import styled from 'styled-components';
 import EditableTable from './components/EditableTable';
+import SuperTable from './components/SuperTable';
 
 const LayoutRoot = styled.div`
   display: grid;
@@ -36,7 +37,8 @@ function App() {
         <Route path="/BasicTable" component={BasicTable} />
         <Route path="/SortingTable" component={SortingTable} />
         <Route path="/EditableTable" component={EditableTable} />
-        <Redirect path="*" to="/StickyTable" />
+        <Route path="/All" component={SuperTable} />
+        <Redirect path="*" to="/All" />
       </Switch>
     </LayoutRoot>
   );
